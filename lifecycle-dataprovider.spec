@@ -1,16 +1,16 @@
-### RPM cms lifecycle-dataprovider 1.0.7
+### RPM cms lifecycle-dataprovider 1.0.5p
 ## INITENV +PATH PYTHONPATH %i/$PYTHON_LIB_SITE_PACKAGES
 %define webdoc_files %{installroot}/%{pkgrel}/doc/
 %define pkg DataProvider
 #%define svnserver svn://svn.cern.ch/reps/CMSDMWM
-Source0: https://github.com/dmwm/LifeCycle/archive/%{realversion}.tar.gz
 #Source0: git://github.com/dmwm/LifeCycle?obj=master/%realversion&export=%pkg&output=/%pkg.tar.gz
+Source0: git://github.com/giffels/LifeCycle?obj=master/%realversion&export=%pkg&output=/%pkg.tar.gz
 #Source0: %svnserver/LifeCycle/tags/%{realversion}/DataProvider/?scheme=svn+ssh&strategy=export&module=DataProvider&output=/dataprovider.tar.gz
-Requires: python
+Requires: python py2-cjson
 BuildRequires: py2-sphinx
 
 %prep
-%setup -D -T -b 0 -n LifeCycle-%{realversion}
+%setup -D -T -b 0 -n DataProvider 
 
 %build
 pwd
