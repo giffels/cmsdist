@@ -1,4 +1,4 @@
-### RPM cms dbs3 3.1.8b
+### RPM cms dbs3 3.2.0pre
 ## INITENV +PATH PYTHONPATH %i/$PYTHON_LIB_SITE_PACKAGES
 ## INITENV +PATH PYTHONPATH %i/x$PYTHON_LIB_SITE_PACKAGES
 ## INITENV SET DBS3_SERVER_ROOT %i/
@@ -6,10 +6,10 @@
 %define wmcver 0.9.83
 %define tag %(echo %{realversion} | sed 's/[.]/_/g; s/^/DBS_/')
 Source0: git://github.com/dmwm/WMCore.git?obj=master/%{wmcver}&export=WMCore&output=/WMCore4%{n}.tar.gz
-Source1: git://github.com/dmwm/DBS.git?obj=master/%{tag}&export=DBS&output=/%{n}.tar.gz
+Source1: git://github.com/giffels/DBSRESTv2.git?obj=master/%{n}&export=DBS&output=/%{n}.tar.gz
 
-Requires: python py2-simplejson py2-sqlalchemy py2-httplib2 cherrypy py2-cheetah yui
-Requires: py2-cjson py2-mysqldb py2-cx-oracle py2-docutils dbs3-pycurl-client rotatelogs
+Requires: python cherrypy rotatelogs
+Requires: py2-cjson py2-cx-oracle
 BuildRequires: py2-sphinx
 
 %prep
@@ -18,13 +18,13 @@ BuildRequires: py2-sphinx
 
 %build
 cd ../WMCore
-python setup.py build_system -s wmc-web
+python setup.py build_system -s wmc-rest
 cd ../DBS
 python setup.py build_system -s dbs-web
 %install
 mkdir -p %i/etc/profile.d %i/{x,}{bin,lib,data,doc} %i/{x,}$PYTHON_LIB_SITE_PACKAGES
 cd ../WMCore
-python setup.py install_system -s wmc-web --prefix=%i
+python setup.py install_system -s wmc-rest --prefix=%i
 cd ../DBS
 python setup.py install_system -s dbs-web --prefix=%i
 find %i -name '*.egg-info' -exec rm {} \;
