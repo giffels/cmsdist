@@ -6,7 +6,7 @@
 %define wmcver 0.9.83
 %define tag %(echo %{realversion} | sed 's/[.]/_/g; s/^/DBS_/')
 Source0: git://github.com/dmwm/WMCore.git?obj=master/%{wmcver}&export=WMCore&output=/WMCore4%{n}.tar.gz
-Source1: git://github.com/giffels/DBSRESTv2.git?obj=master/%{n}&export=DBS&output=/%{n}.tar.gz
+Source1: git://github.com/giffels/DBSRESTv2.git?obj=master/%{realversion}&export=DBS&output=/%{n}.tar.gz
 
 Requires: python cherrypy rotatelogs
 Requires: py2-cjson py2-cx-oracle
