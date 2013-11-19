@@ -5,6 +5,7 @@
 %define tag %(echo %{realversion} | sed 's/[.]/_/g; s/^/DBS_/')
 Source0: git://github.com/dmwm/DBS.git?obj=master/%{tag}&export=LifeCycleTests-%{realversion}&output=/LifeCycleTests-%{realversion}.tar.gz
 Requires: python dbs3-client lifecycle-dataprovider PHEDEX-lifecycle py2-cjson
+BuildRequires: py2-sphinx
 
 %prep
 %setup -b 0 -n LifeCycleTests-%{realversion}
