@@ -1,10 +1,10 @@
-### RPM cms dbs3-pycurl-client 3.1.9c
+### RPM cms dbs3-pycurl-client 3.1.9d
 ## INITENV +PATH PYTHONPATH %i/$PYTHON_LIB_SITE_PACKAGES
 ## INITENV +PATH PYTHONPATH %i/x$PYTHON_LIB_SITE_PACKAGES
 
 #%define webdoc_files %{installroot}/%{pkgrel}/doc/
 %define tag %(echo %{realversion} | sed 's/[.]/_/g; s/^/DBS_/')
-Source0: git://github.com/dmwm/DBS.git?obj=master/%{tag}&export=DBS&output=/%{n}.tar.gz
+Source0: git://github.com/giffels/DBS.git?obj=dbs3-private-rpm/HEAD&export=DBS&output=/%{n}.tar.gz
 Requires: python py2-cjson py2-pycurl curl
 BuildRequires: py2-sphinx
 

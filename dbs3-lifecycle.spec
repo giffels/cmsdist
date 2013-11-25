@@ -1,9 +1,9 @@
-### RPM cms dbs3-lifecycle 3.1.9
+### RPM cms dbs3-lifecycle 3.1.9d
 ## INITENV +PATH PYTHONPATH %i/$PYTHON_LIB_SITE_PACKAGES
 ## INITENV +PATH PYTHONPATH %i/x$PYTHON_LIB_SITE_PACKAGES
 ## INITENV SET DBS3_LIFECYCLE_ROOT %i/
 %define tag %(echo %{realversion} | sed 's/[.]/_/g; s/^/DBS_/')
-Source0: git://github.com/giffels/DBS.git?obj=master/HEAD&export=LifeCycleTests-%{realversion}&output=/LifeCycleTests-%{realversion}.tar.gz
+Source0: git://github.com/giffels/DBS.git?obj=dbs3-private-rpm/HEAD&export=LifeCycleTests-%{realversion}&output=/LifeCycleTests-%{realversion}.tar.gz
 Requires: python dbs3-client lifecycle-dataprovider PHEDEX-lifecycle py2-cjson
 BuildRequires: py2-sphinx
 
